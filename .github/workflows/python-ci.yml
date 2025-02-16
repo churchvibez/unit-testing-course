@@ -36,7 +36,7 @@ jobs:
         
         
       - name: Adjust coverage permissions
-        run: chmod 644 coverage.xml
+        run: chmod 644 target/site/jacoco/jacoco.xml
 
       - name: Upload coverage artifact
         uses: actions/upload-artifact@v4
