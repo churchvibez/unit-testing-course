@@ -27,9 +27,7 @@ jobs:
 
       - name: Run tests with coverage
         run: |
-            coverage run -m unittest discover -s tests -p "*.py"
-            coverage report
-            coverage xml -o coverage.xml
+            pytest --cov=src --cov-report=xml --cov-report=term-missing
         
         
         
