@@ -27,7 +27,10 @@ jobs:
 
       - name: Run tests with coverage
         run: |
-              pytest --cov=src --cov-report=xml:coverage.xml --cov-report=term-missing
+            pytest --cov=src --cov-report=xml:coverage.xml --cov-report=term-missing
+            mkdir -p target/site/jacoco
+            mv coverage.xml target/site/jacoco/jacoco.xml
+  
         
   
         
