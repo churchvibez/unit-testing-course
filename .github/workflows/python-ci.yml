@@ -25,11 +25,13 @@ jobs:
           pip install -r requirements.txt
           pip install pytest pytest-cov
 
+          
       - name: Run tests with coverage
         run: |
             pytest --cov=src --cov-report=xml:coverage.xml --cov-report=term-missing
             mkdir -p target/site/jacoco
             mv coverage.xml target/site/jacoco/jacoco.xml
+  
   
         
       - name: Debug Coverage File
@@ -71,13 +73,14 @@ jobs:
       - name: SonarCloud Scan
         uses: sonarsource/sonarcloud-github-action@v3
         env:
-              SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
-              args: >
-                -Dsonar.projectKey=churchvibez_unit-testing-course
-                -Dsonar.organization=churchvibez
-                -Dsonar.python.version=3.11
-                -Dsonar.sources=src
-                -Dsonar.tests=tests
-                -Dsonar.coverageReportPaths=coverage.xml
+          args: >
+            -Dsonar.projectKey=churchvibez_unit-testing-course
+            -Dsonar.organization=churchvibez
+            -Dsonar.python.version=3.11
+            -Dsonar.sources=src
+            -Dsonar.tests=tests
+            -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
+
           
