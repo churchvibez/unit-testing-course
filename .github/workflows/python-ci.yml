@@ -27,7 +27,9 @@ jobs:
 
       - name: Run tests with coverage
         run: |
-          pytest --cov=src --cov-report=xml:coverage.xml --cov-report=term-missing
+            pytest --cov=src --cov-report=cobertura:coverage.xml --cov-report=term-missing
+            chmod 644 coverage.xml
+        
         
       - name: Adjust coverage permissions
         run: chmod 644 coverage.xml
