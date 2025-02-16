@@ -48,7 +48,7 @@ jobs:
         uses: coverallsapp/github-action@v2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          path-to-lcov: ./coverage.xml
+          path-to-lcov: target/site/jacoco/jacoco.xml
 
   sonarcloud:
     runs-on: ubuntu-latest
