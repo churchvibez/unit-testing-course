@@ -1,5 +1,7 @@
-import unittest
-from src.quadratic_solver import solve_quadratic
+import unittest, sys
+sys.path.append("src")
+from quadratic_solver import solve_quadratic
+
 
 class TestQuadraticSolver(unittest.TestCase):
 
