@@ -28,7 +28,8 @@ jobs:
       - name: Run tests with coverage
         run: |
             pytest --cov=src --cov-report=xml:coverage.xml --cov-report=term-missing
-            chmod 644 coverage.xml
+            mv coverage.xml target/site/jacoco/jacoco.xml
+        
         
         
         
@@ -58,6 +59,13 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: coverage-report
+
+      - name: Debug Coverage Report
+        run: |
+            echo "🔍 Listing files in workspace:"
+            ls -R .
+            echo "🔍 Displaying coverage file content:"
+            cat target/site/jacoco/jacoco.xml || echo "⚠️ Coverage file not found!"
 
       - name: SonarCloud Scan
         uses: sonarsource/sonarcloud-github-action@v3
