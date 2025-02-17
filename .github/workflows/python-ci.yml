@@ -25,19 +25,14 @@ jobs:
           pip install -r requirements.txt
           pip install pytest pytest-cov
 
-          
       - name: Run tests with coverage
         run: |
             pytest --cov=src --cov-report=xml:coverage.xml --cov-report=term-missing
             mkdir -p target/site/jacoco
             mv coverage.xml target/site/jacoco/jacoco.xml
   
-  
-        
       - name: Debug Coverage File
         run: ls -R target/site/jacoco
-        
-        
         
       - name: Adjust coverage permissions
         run: chmod 644 target/site/jacoco/jacoco.xml
